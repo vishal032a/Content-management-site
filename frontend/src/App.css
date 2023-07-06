@@ -37,6 +37,34 @@
 .register{
   margin-left: 30%;
 }
+.login{
+  margin-left: 30%;
+  margin-top: 50px;
+}
+.add-content{
+  margin-left: 30%;
+}
+
+.area{
+  resize: none;
+}
+.add{
+  display: inline-block;
+}
+.sub_btn{
+  margin-left: 20%;
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.sub_btn:hover {
+  background-color: #ccc;
+  color: #000;
+}
 .reg_button{
   margin: 25px;
   padding: 10px;
@@ -50,8 +78,9 @@
   }
 }
 
-
-
+.nav_right{
+  text-align: right;
+}
 .App-link {
   color: #61dafb;
 }
