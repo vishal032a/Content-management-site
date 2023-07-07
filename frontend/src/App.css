@@ -72,6 +72,38 @@
   background-color: skyblue;
   cursor: pointer;
 }
+
+
+.drop{
+  border: 2px solid black ;
+  border-style: dashed;
+  border-radius: 20px;
+  display: inline-block;
+  width: 400px;
+  height: 100px;
+  margin-bottom: 10px;
+  margin-left: 30%;
+}
+
+.file_list{
+   border: 2px solid black; 
+   border-radius: 24px; 
+  padding: 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.x_btn{
+  margin-left: 9px;
+  border-radius: 18px;
+  border-color: black;
+}
+.x_btn:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

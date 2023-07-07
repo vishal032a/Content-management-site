@@ -44,8 +44,6 @@ const storage = multer.diskStorage({
             fs.mkdir(`./uploads/${req.params.id}`,(err)=>{
                 if(err)
                 console.log(err);
-                else
-                console.log("directory created successfully")
             });
         }
         return callback(null, `./uploads/${req.params.id}`);
@@ -60,7 +58,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 app.post('/upload/:id', upload.any('files'), (req, res) => {
-    console.log(req.files)
     res.send({result:'Files uploaded successfully'});
 });
 

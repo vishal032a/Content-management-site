@@ -12,22 +12,23 @@ const Nav = ()=>{
         navigate('signup');
     }
     return(
-        <div className='navbar'>
-            {auth?
-                <ul>
-                    <li><Link to="/">Contents</Link></li>
-                    <li><Link to="/add">Add Content</Link></li>
-                    <li><Link to="/update">Update Content</Link></li>
-                    <li><Link to="/profile">Profile</Link></li>
-                    <li><Link onClick={logout} to="/signup">Logout({JSON.parse(auth).name})</Link></li>
-                </ul>
-                :
-                <ul className='nav_right'>
-                    <li><Link to="/login">login</Link></li>
-                    <li><Link to="/signup">Signup</Link></li>
-                </ul>
-            }
-            
+        <>
+            <div className='navbar'>
+                {auth?
+                    <ul>
+                        <li><Link to="/">Contents</Link></li>
+                        <li><Link to="/add">Add Content</Link></li>
+                        <li><Link to="/update">Update Content</Link></li>
+                        <li><Link to="/profile">Profile</Link></li>
+                        <li><Link onClick={logout} to="/signup">Logout({JSON.parse(auth).name})</Link></li>
+                    </ul>
+                    :
+                    <ul className='nav_right'>
+                        <li><Link to="/login">login</Link></li>
+                        <li><Link to="/signup">Signup</Link></li>
+                    </ul>
+                }
+            </div>   
             <Routes>
 
                 <Route element= {<PrivateComponent/>}>
@@ -43,7 +44,7 @@ const Nav = ()=>{
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/login' element={<Login/>}/>
             </Routes>
-        </div>
+        </>
     )
 }
 export default Nav;
