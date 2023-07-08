@@ -40,13 +40,15 @@ app.post("/login",async (req,res)=>{
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        if(!fs.existsSync(`./uploads/${req.params.id}`)){
-            fs.mkdir(`./uploads/${req.params.id}`,(err)=>{
+        if(!fs.existsSync(`./uploads/${req.params.user_id}`)){
+            fs.mkdir(`./uploads/${req.params.user_id}`,(err)=>{
                 if(err)
                 console.log(err);
             });
         }
-        return callback(null, `./uploads/${req.params.id}`);
+        fs.mkdir(`./uploads/${req.params.user_id}/${req.params.content_id}`,(err)=>{
+        })
+        return callback(null, `./uploads/${req.params.user_id}/${req.params.content_id}`);
     },
     filename: (req, file, callback) => {
       const filename = `${file.originalname}`;
@@ -57,7 +59,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
-app.post('/upload/:id', upload.any('files'), (req, res) => {
+app.post('/upload/:user_id/:content_id', upload.any('files'), (req, res) => {
     res.send({result:'Files uploaded successfully'});
 });
 
@@ -67,4 +69,28 @@ app.post('/add-content',async (req,res)=>{
     res.send(result);
 })
 
+app.get('/content',async (req,res)=>{
+    contents = await Content.find();
+    if(contents.length>0){
+        res.send(contents);
+    }
+    else{
+        res.send({result:"no content in db"});
+    }
+})
+
+app.delete('/delete/:user_id/:content_id',async (req,res)=>{
+    const result = await Content.deleteOne({_id:req.params.content_id});
+    fs.rm(`./uploads/${req.params.user_id}/${req.params.content_id}`,{recursive:true},(err)=>{
+        if(err)
+        console.log(err);
+    })
+    res.send(result);
+})
+
+// app.delete('/delete/:id1/:id2',(req,res)=>{
+//     console.log(req.params.id1);
+//     console.log(req.params.id2)
+//     res.send({result:"recieved"});
+// })
 app.listen(5000);

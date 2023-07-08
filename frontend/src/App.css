@@ -104,6 +104,23 @@
   cursor: pointer;
 }
 
+.invalid-input{
+  color: red;
+  margin-top:-20px;
+  display: block;
+  margin-left: 30px;
+}
+.del_item{
+  list-style-type: none;
+}
+.del_btn{
+
+    margin: 10px;
+    padding: 5px;
+    padding-left: 24px;
+    border-radius: 16px;
+    padding-right: 24px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -116,7 +133,9 @@
 .App-link {
   color: #61dafb;
 }
-
+.content_list{
+  background-color: #73cce4
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

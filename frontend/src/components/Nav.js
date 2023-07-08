@@ -4,12 +4,13 @@ import Signup from './Signup';
 import PrivateComponent from './PrivateComponent';
 import Login from './Login';
 import AddProduct from './AddContent';
+import ContentList from './Content_list';
 const Nav = ()=>{
     const auth = localStorage.getItem('user');
     const navigate = useNavigate();
     const logout = ()=>{
         localStorage.clear();
-        navigate('signup');
+        navigate('/login');
     }
     return(
         <>
@@ -20,7 +21,7 @@ const Nav = ()=>{
                         <li><Link to="/add">Add Content</Link></li>
                         <li><Link to="/update">Update Content</Link></li>
                         <li><Link to="/profile">Profile</Link></li>
-                        <li><Link onClick={logout} to="/signup">Logout({JSON.parse(auth).name})</Link></li>
+                        <li><Link onClick={logout} to="/login">Logout({JSON.parse(auth).name})</Link></li>
                     </ul>
                     :
                     <ul className='nav_right'>
@@ -33,7 +34,7 @@ const Nav = ()=>{
 
                 <Route element= {<PrivateComponent/>}>
 
-                <Route path='/' element={<h1>here is your content</h1>}/>
+                <Route path='/' element={<ContentList/>}/>
                 <Route path='/add' element={<AddProduct/>}/>
                 <Route path='/update' element={<h1>update product here </h1>}/>
                 <Route path='/profile' element={<h1>here is your profile section</h1>}/>
