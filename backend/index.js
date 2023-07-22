@@ -2,7 +2,17 @@ const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
 const fs = require('fs');
-require("./db/config")
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const USERNAME = process.env.DB_USERNAME;
+const PASSWORD = process.env.DB_PASSWORD;
+
+const URL = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.fomyegu.mongodb.net/CMS?retryWrites=true&w=majority`
+mongoose.connect(URL);
+
 const Content = require("./db/Contents")
 const User = require("./db/User");
 const app = express();
